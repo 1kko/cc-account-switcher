@@ -24,13 +24,16 @@ chmod +x ccswitch.sh
 ### Basic Commands
 
 ```bash
+# Quick switch to next account (when 2+ accounts are managed)
+./ccswitch.sh
+
 # Add current account to managed accounts
 ./ccswitch.sh --add-account
 
 # List all managed accounts
 ./ccswitch.sh --list
 
-# Switch to next account in sequence
+# Switch to next account in sequence (explicit)
 ./ccswitch.sh --switch
 
 # Switch to specific account by number or email
@@ -48,9 +51,10 @@ chmod +x ccswitch.sh
 
 1. **Log into Claude Code** with your first account (make sure you're actively logged in)
 2. Run `./ccswitch.sh --add-account` to add it to managed accounts
-3. **Log out** and log into Claude Code with your second account
+3. **Log out** by typing `/logout` inside your Claude Code.
+4. **Log into Claude Code** with your **second account**
 4. Run `./ccswitch.sh --add-account` again
-5. Now you can switch between accounts with `./ccswitch.sh --switch`
+5. Now you can switch between accounts with `./ccswitch.sh` or `./ccswitch.sh --switch`
 6. **Important**: After each switch, restart Claude Code to use the new authentication
 
 > **What gets switched:** Only your authentication credentials change. Your themes, settings, preferences, and chat history remain exactly the same.
