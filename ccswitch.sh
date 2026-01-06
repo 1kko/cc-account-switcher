@@ -734,7 +734,18 @@ main() {
             show_usage
             ;;
         "")
-            show_usage
+            # Auto-switch if 2+ accounts, otherwise show help
+            if [[ -f "$SEQUENCE_FILE" ]]; then
+                local account_count
+                account_count=$(jq -r '.sequence | length' "$SEQUENCE_FILE" 2>/dev/null || echo "0")
+                if [[ "$account_count" -ge 2 ]]; then
+                    cmd_switch
+                else
+                    show_usage
+                fi
+            else
+                show_usage
+            fi
             ;;
         *)
             echo "Error: Unknown command '$1'"
