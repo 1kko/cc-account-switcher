@@ -61,7 +61,7 @@ chmod +x ccswitch.sh
 
 ## Requirements
 
-- Bash 4.4+
+- Bash 3.2+ (compatible with macOS default bash)
 - `jq` (JSON processor)
 
 ### Installing Dependencies

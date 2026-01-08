@@ -122,12 +122,13 @@ write_json() {
     chmod 600 "$file"
 }
 
-# Check Bash version (4.4+ required)
+# Check Bash version (3.2+ required for macOS compatibility)
 check_bash_version() {
     local version
     version=$(bash --version | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)
-    if ! awk -v ver="$version" 'BEGIN { exit (ver >= 4.4 ? 0 : 1) }'; then
-        echo "Error: Bash 4.4+ required (found $version)"
+    if ! awk -v ver="$version" 'BEGIN { exit (ver >= 3.2 ? 0 : 1) }'; then
+        echo "Error: Bash 3.2+ required (found $version)"
+        echo "This script is compatible with macOS default bash (3.2) and newer versions"
         exit 1
     fi
 }
